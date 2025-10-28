@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MemoryGame.Data\MemoryGame.Data.csproj" />
     <ProjectReference Include="..\MemoryGame.Domain\MemoryGame.Domain.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using MemoryGame.Wpf.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,7 @@ namespace MemoryGame.Wpf
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new GameViewModel();// Set the DataContext to the GameViewModel
         }
     }
 }
