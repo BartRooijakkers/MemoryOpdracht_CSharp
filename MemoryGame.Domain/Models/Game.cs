@@ -85,7 +85,8 @@ public class Game
             else
             {
                 //No match, flip both cards back down after a short delay
-                //DELAY INBOUWEN? 
+                //Delay inbouwen, Hier gaat het fout!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 _firstFlippedCard.Flip();
                 card.Flip();
             }
