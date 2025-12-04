@@ -1,12 +1,12 @@
 ﻿<Window x:Class="MemoryGame.Wpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Memory" Width="800" Height="600">
+        Title="Memory" Width="900" Height="600">
     <DockPanel Margin="12">
         <!-- topbar start + settings -->
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,8">
             <TextBlock Text="Paren:" VerticalAlignment="Center"/>
-            <TextBox x:Name="PairCountBox" Width="50" Margin="6,0" Text="5"/>
+            <TextBox x:Name="PairCountBox" Width="50" Margin="6,0" Text="{Binding PairCount, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Content="Nieuw spel"
                     Margin="8,0"
                     Command="{Binding StartCommand}"
@@ -17,8 +17,14 @@
             <TextBlock Text="{Binding Attempts}" Margin="6,0" VerticalAlignment="Center"/>
         </StackPanel>
 
-        <!-- Kaartenraster -->
-        <ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Cards -->
+        <ScrollViewer Grid.Column="0">
             <ItemsControl ItemsSource="{Binding Cards}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -54,5 +60,26 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+
+        <!-- Highscores -->
+        <StackPanel Grid.Column="1" Margin="16,8,0,0">
+            <TextBlock Text="Naam:" />
+            <TextBox Text="{Binding PlayerName}" Width="150" Margin="0,0,0,8" />
+
+            <TextBlock Text="Highscores:" FontWeight="Bold" />
+            <ItemsControl ItemsSource="{Binding HighScores}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding PlayerName}" Width="100" />
+                            <TextBlock Text="{Binding Score}" Width="60" />
+                            <TextBlock Text="{Binding Cards}" Width="40" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+
+        </Grid>
     </DockPanel>
 </Window>
