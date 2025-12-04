@@ -18,7 +18,20 @@ public class Game
     private readonly Board _board = new();
     private readonly Stopwatch _timer = new();
 
+    //Flipper card tracking
     private Card? _firstFlippedCard;
+
+    //Fix for the second card not showing up in the ui due to immediate flip back hoogie
+    private Card? _pendingA;
+    private Card? _pendingB;
+
+    //Check if there is a pending mismatch to be resolved hoogie
+    public bool HasPendingMismatch => _pendingA != null && _pendingB != null;
+
+    //Get the IDs of the pending mismatch cards !!Cannot be null hoogie
+    public (int firstCardId, int secondCardId) GetPendingMismatchIds() => HasPendingMismatch ? (_pendingA!.Id, _pendingB!.Id) : (-1, -1);
+
+
 
     public int Attempts { get; private set; }
     public bool IsCompleted => _board.AllMatched();
@@ -39,7 +52,7 @@ public class Game
         _firstFlippedCard = null;
         _timer.Restart();
     }
-    //Overload to allow seeding for testing purposes
+    //Overload to allow seeds for testing purposes
     public void Start(int pairCount, int? seed)
     {
         _board.Initialize(pairCount, seed);
@@ -85,10 +98,13 @@ public class Game
             else
             {
                 //No match, flip both cards back down after a short delay
-                //Delay inbouwen, Hier gaat het fout!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                _firstFlippedCard.Flip();
-                card.Flip();
+
+                _pendingA = _firstFlippedCard;
+                _pendingB = card;
+
+                //Old method - Immediate flip back (causes UI issues) Hoogie
+                //_firstFlippedCard.Flip();
+                //card.Flip();
             }
 
             _firstFlippedCard = null; //Reset first flipped card
@@ -161,6 +177,19 @@ public class Game
         var (added, rank) = repo.AddOrUpdateTop10(entry); //Try to add/update the high score in the repository
         return (added, rank, entry); //Return result
 
+    }
+    /// <summary>
+    /// Resolves the pending mismatch by flipping the states of the involved objects and clearing the pending cards
+    /// </summary>
+    /// <remarks>This method performs no operation if there is no pending mismatch. After execution, the
+    /// pending references are set to <see langword="null"/>. Ensure that the <see cref="HasPendingMismatch"/> property
+    /// is <see langword="true"/> before calling this method to avoid unnecessary invocation. This method was introduced to resolve the imediate flipback issue</remarks>
+    public void ResolvePendingMismatch()
+    {
+        if (!HasPendingMismatch) return;
+        _pendingA!.Flip();
+        _pendingB!.Flip();
+        _pendingA = _pendingB = null;
     }
 
 }

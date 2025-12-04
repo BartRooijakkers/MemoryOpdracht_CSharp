@@ -8,6 +8,9 @@ using MemoryGame.Domain.Models;
 using MemoryGame.Wpf;               // RelayCommand
 using MemoryGame.Wpf.ViewModels;    // CardViewModel
 
+using System.Diagnostics;
+
+
 namespace MemoryGame.Wpf.ViewModels
 {
     public class GameViewModel : INotifyPropertyChanged // ViewModel for the game itself
@@ -60,6 +63,7 @@ namespace MemoryGame.Wpf.ViewModels
         /// <param name="pairCount">The number of card pairs to include in the game. The default value is 5.</param>
         private void StartGame(int pairCount = 5)
         {
+            //TODO: Allow user to select pair count from textbox.
             _game.Start(pairCount); // Start the game in the model
 
             Cards.Clear(); // Clear existing cards
@@ -80,7 +84,8 @@ namespace MemoryGame.Wpf.ViewModels
         /// <param name="parameter">The identifier of the card to flip. This can be an <see cref="int"/> representing the card ID  or a <see
         /// cref="string"/> that can be parsed into an integer. If the parameter is null or invalid, the method does
         /// nothing.</param>
-        private void FlipCard(object? parameter)
+        /// Added Async to Hoogie
+        private async void FlipCard(object? parameter)
         {
             // Validate and parse parameter
             if (parameter is null) return;
@@ -96,7 +101,15 @@ namespace MemoryGame.Wpf.ViewModels
                 return; // Invalid ID, do nothing
             }
 
+            //Prevent ClickSpamming when there is a pending mismatch Hoogie
+            if (_game.HasPendingMismatch)
+            {
+                return; // Do nothing if there is a pending mismatch to resolve Hoogie
+            }
+
+            Trace.WriteLine($"Flipping card with ID: {id}"); // Debug output
             _game.FlipCard(id); // Flip the card in the model
+            Trace.WriteLine($"Card with ID: {id} flipped."); // Debug output
 
             // Refresh the specific card view model
             var vm = Cards.FirstOrDefault(x => x.Id == id);
@@ -111,10 +124,25 @@ namespace MemoryGame.Wpf.ViewModels
             // Update game stats
             Attempts = _game.Attempts;
             IsCompleted = _game.IsCompleted;
+
+            //Mismatch delay handling Hoogie
+            if (_game.HasPendingMismatch)
+            {
+                await Task.Delay(500); //Wait for 0.5 seconds before flipping back
+                _game.ResolvePendingMismatch(); // Resolve the mismatch in the model
+                // Refresh all cards again after resolving mismatch
+                foreach (var c in Cards)
+                {
+                    c.Refresh();
+                }
+            }
+
             // Stop UI timer if game is completed
             if (IsCompleted)
             {
                 _uiTimer.Stop();
+                Trace.WriteLine("Game completed! Stopping timer."); // Debug output
+                Trace.WriteLine($"Score: {_game.CalculateScore()}");
             }
         }
 

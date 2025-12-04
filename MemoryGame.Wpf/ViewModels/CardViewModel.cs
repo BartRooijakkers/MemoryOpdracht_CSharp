@@ -1,6 +1,7 @@
-﻿using System.ComponentModel;
+﻿using MemoryGame.Domain.Models;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using MemoryGame.Domain.Models;
 
 namespace MemoryGame.Wpf.ViewModels
 {
