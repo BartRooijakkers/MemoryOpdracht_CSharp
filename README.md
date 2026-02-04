@@ -53,5 +53,5 @@ This project was developed as part of the Object Oriented Software Design and De
 ## Author
 
 Bart Rooijakkers  
-HBO ICT student at Windesheim  
+HBO-ICT student at Windesheim  
 2025
