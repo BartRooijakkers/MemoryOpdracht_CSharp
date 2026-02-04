@@ -23,12 +23,12 @@ Events are used to handle game flow and state changes while exceptions are used 
 
 During this project the following skills and concepts were practiced
 
-1 Object oriented design and implementation  
-2 Working with classes and objects  
-3 Using events to manage application flow  
-4 Handling exceptions in a controlled way  
-5 Structuring a small scale application  
-6 Writing maintainable and readable code  
+1. Object oriented design and implementation  
+2. Working with classes and objects  
+3. Using events to manage application flow  
+4. Handling exceptions in a controlled way  
+5. Structuring a small scale application  
+6. Writing maintainable and readable code  
 
 ## Technologies used
 
