@@ -32,16 +32,16 @@ During this project the following skills and concepts were practiced
 
 ## Technologies used
 
-1 C#  
-2 .NET  
-3 Visual Studio  
+1. C#  
+2. .NET  
+3. Visual Studio  
 
 ## How to run the project
 
-1 Clone this repository  
-2 Open the solution in Visual Studio  
-3 Build the solution  
-4 Run the application  
+1. Clone this repository  
+2. Open the solution in Visual Studio  
+3. Build the solution  
+4. Run the application  
 
 ## Notes
 
