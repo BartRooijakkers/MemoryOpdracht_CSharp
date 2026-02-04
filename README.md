@@ -1,9 +1,7 @@
 # MemoryOpdracht_CSharp
 
-This repository contains a small C# memory game developed during my HBO-ICT study for the semester **O**bject **O**riented **S**oftware **D**esign and **D**evelopment.
+This repository contains a small C# memory game developed during my HBO-ICT study, focused on applying object oriented principles and core C# concepts.
 
-The goal of this assignment was to apply object oriented programming principles and core C# concepts in a practical software project.
-	
 ## Project context
 
 This assignment was part of the HBO-ICT curriculum at Windesheim.  
@@ -21,6 +19,9 @@ Events are used to handle game flow and state changes, while exceptions are used
 
 The solution also includes a separate test project with unit tests for core game logic.
 
+The codebase makes use of XML documentation comments to document classes, methods and properties.  
+This was done to experiment with structured code documentation that integrates with Visual Studio tooling and supports inheritance.
+
 ## Learning objectives
 
 During this project the following skills and concepts were practiced
@@ -36,8 +37,8 @@ During this project the following skills and concepts were practiced
 
 1. C#  
 2. .NET  
-3. Visual Studio
-4. xUnit  
+3. Visual Studio  
+4. xUnit (for unit testing) 
 
 ## How to run the project
 
@@ -48,7 +49,7 @@ During this project the following skills and concepts were practiced
 
 ## Notes
 
-This project was developed as part of the Object Oriented Software Design and Development course.
+This project was developed as part of the **O**bject **O**riented **S**oftware **D**esign and **D**evelopment course.
 
 ## Author
 
