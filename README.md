@@ -1,20 +1,23 @@
 # MemoryOpdracht_CSharp
 
-This repository contains a C# memory game developed during my study: HBO-ICT for the semester Object Oriented Software Design & Development. 
+This repository contains a small C# memory game developed during my HBO-ICT study for the semester **O**bject **O**riented **S**oftware **D**esign & **D**evelopment.
 
-The main goal of this assignment was to apply object oriented programming principles in a practical software project.
+The goal of this assignment was to apply object oriented programming principles and core C# concepts in a practical software project.
 
 ## Project context
 
 This assignment was part of the HBO-ICT curriculum at Windesheim.  
-The focus of the semester was on designing and developing software using object oriented principles such as encapsulation abstraction inheritance and polymorphism.
+The focus of the semester was on designing and developing software using object oriented principles such as encapsulation, abstraction, inheritance and polymorphism.
+
+In addition the project was used to practice working with events and exceptions within a structured application.
 
 ## Application description
 
-The application is a memory game implemented in C#.  
-Players flip cards and try to find matching pairs while the game logic manages state validation and progression.
+The application is a simple memory game implemented in C#.  
+Players flip cards and try to find matching pairs while the game logic manages game state and progression.
 
-The project emphasizes clean structure readability and separation of responsibilities.
+The project focuses on clear structure, readability and separation of responsibilities.  
+Events are used to handle game flow and state changes while exceptions are used for validation and error handling.
 
 ## Learning objectives
 
@@ -22,9 +25,10 @@ During this project the following skills and concepts were practiced
 
 1 Object oriented design and implementation  
 2 Working with classes and objects  
-3 Applying design principles in C#  
-4 Structuring a small scale application  
-5 Writing maintainable and readable code  
+3 Using events to manage application flow  
+4 Handling exceptions in a controlled way  
+5 Structuring a small scale application  
+6 Writing maintainable and readable code  
 
 ## Technologies used
 
@@ -41,9 +45,11 @@ During this project the following skills and concepts were practiced
 
 ## Notes
 
-This project was created for educational purposes and reflects the learning objectives of the course at that time.
+This project was created as part of the **O**bject **O**riented **S**oftware **D**esign & **D**evelopment semester.
+
 
 ## Author
 
 Bart Rooijakkers  
-HBO ICT student at Windesheim
+HBO-ICT student at Windesheim  
+2025
